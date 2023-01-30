@@ -13,11 +13,14 @@ const App = () => {
     setAreaText(e.target.value)
   };
 
-  const getMarkdownText = () => {
-    let rawMarkup = marked.parse(areaText);
-    let cleanMarkup = DOMPurify.sanitize(rawMarkup);
-    return { __html: cleanMarkup };
+  const renderer = new marked.Renderer();
+  renderer.link = function(href, title, text) {
+    return `<a target="_blank" href=${href}>${text}</a>`;
   };
+
+  marked.setOptions({
+    breaks: true
+  });
 
   return (
     <div className="App">
@@ -29,7 +32,7 @@ const App = () => {
       
       <div className="preview_wrapper">
         <div className="toolbar">Previewer</div>
-        <div id="preview" dangerouslySetInnerHTML={getMarkdownText()}></div>
+        <div id="preview" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(marked.parse(areaText, { renderer })) }}></div>
       </div>
 
     </div>

@@ -16,7 +16,7 @@ const Button = ({ path, id, keyLetter, setSound, drumOn }) => {
     },[drumOn])
     
     const onKeyAction = (evt) => {
-        if (evt.key === keyLetter) {
+        if (evt.key === keyLetter || evt.key === key) {
             setSound(id);
             toggle();
         }
@@ -29,8 +29,8 @@ const Button = ({ path, id, keyLetter, setSound, drumOn }) => {
     }
 
     return (
-        <div onClick={drumOn ? onClickHandler : null} className={`drum-pad ${playing ? "drum-pad-active" : null}`} id={id}>
-            <audio className="clip" id={id} src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"></audio>
+        <div onClick={drumOn ? onClickHandler : null} className={`drum-pad ${playing ? "drum-pad-active" : null}`} id={keyLetter}>
+            <audio className="clip" id={id} src={path}></audio>
             {key}
         </div>
     );

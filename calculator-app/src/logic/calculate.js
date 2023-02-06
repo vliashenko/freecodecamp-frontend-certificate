@@ -4,15 +4,6 @@ function isNumber(item) {
   return !!item.match(/[0-9]+/);
 }
 
-/**
- * Given a button name and a calculator data object, return an updated
- * calculator data object.
- *
- * Calculator data object contains:
- *   total:s      the running total
- *   next:String       the next number to be operated on with the total
- *   operation:String  +, -, etc.
- */
 export default function calculate(obj, buttonName, setDisplay) {
   if (buttonName === 'AC') {
     setDisplay(0)
@@ -24,6 +15,7 @@ export default function calculate(obj, buttonName, setDisplay) {
   }
 
   if (isNumber(buttonName)) {
+  //if there is a minus with operation in queue.
     if(obj.operation && obj.minus && !obj.next) {
       setDisplay( -Math.abs(parseInt(obj.total)).toString());
       return { ...obj, next: -Math.abs(parseInt(obj.total)).toString()};

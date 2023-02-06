@@ -57,6 +57,7 @@ function App() {
   return (
     <Main id='quote-wrapper'>
       <Box id='quote-box'>
+
         <Content id='quote-content'>
           <Text id='text'>
             <QuoteMark id='quote-mark'>
@@ -67,11 +68,13 @@ function App() {
             ))}
           </Text>
         </Content>
+
         <Author id='author'>
-        {error?.length ? '' : quote?.map(item => (
-              `-${item.author}`
-            ))}
-          </Author>
+          {error?.length ? '' : quote?.map(item => (
+            `-${item.author}`
+          ))}
+         </Author>
+
         <Handlers id='quote-handlers'>
           <Social id='quote-socials'>
             <Tweet 
@@ -85,7 +88,7 @@ function App() {
           </Social>
         
           <ChangeQuote disabled={loading} onClick={handleClick} id='new-quote'>
-          {loading ? <Rotate className="fa-solid fa-spinner"></Rotate> : 'New quote'}
+            {loading ? <Rotate className="fa-solid fa-spinner"></Rotate> : 'New quote'}
           </ChangeQuote>
         </Handlers>
       </Box>

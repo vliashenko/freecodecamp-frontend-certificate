@@ -17,8 +17,8 @@ export default function calculate(obj, buttonName, setDisplay) {
   if (isNumber(buttonName)) {
   //if there is a minus with operation in queue.
     if(obj.operation && obj.minus && !obj.next) {
-      setDisplay( -Math.abs(parseInt(obj.total)).toString());
-      return { ...obj, next: -Math.abs(parseInt(obj.total)).toString()};
+      setDisplay( -Math.abs(parseInt(buttonName)).toString());
+      return { ...obj, next: -Math.abs(parseInt(buttonName)).toString()};
     }
     
     if (buttonName === '0' && obj.next === '0') {
